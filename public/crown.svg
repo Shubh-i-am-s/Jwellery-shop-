@@ -1,0 +1,21 @@
+<svg width="100" height="70" viewBox="0 0 100 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFDF73" />
+      <stop offset="40%" stop-color="#D4AF37" />
+      <stop offset="60%" stop-color="#AA7B18" />
+      <stop offset="100%" stop-color="#FFDF73" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+  <path d="M50 10 L60 30 L85 20 L75 45 L95 50 L85 65 L15 65 L5 50 L25 45 L15 20 L40 30 Z" fill="url(#gold-grad)" filter="url(#shadow)"/>
+  <circle cx="50" cy="5" r="5" fill="url(#gold-grad)" filter="url(#shadow)"/>
+  <circle cx="15" cy="15" r="4" fill="url(#gold-grad)" filter="url(#shadow)"/>
+  <circle cx="85" cy="15" r="4" fill="url(#gold-grad)" filter="url(#shadow)"/>
+  <circle cx="50" cy="45" r="6" fill="#FFF" opacity="0.8"/>
+  <circle cx="30" cy="55" r="4" fill="#FFF" opacity="0.8"/>
+  <circle cx="70" cy="55" r="4" fill="#FFF" opacity="0.8"/>
+  <path d="M15 65 L85 65 L80 70 L20 70 Z" fill="#AA7B18" />
+</svg>

@@ -1,0 +1,181 @@
+.hero-sequence-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000;
+  /* Push behind navbar if needed, but since navbar is fixed it's ok */
+}
+
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: block; /* remove default inline gap */
+}
+
+.loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  font-family: var(--font-body);
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  transition: opacity 1s ease 0.5s; /* delay fade out slightly */
+  pointer-events: none;
+}
+
+.loader-overlay.fade-out {
+  opacity: 0;
+}
+
+.loader-text {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.hero-content-overlay {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  text-align: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.hero-main-title {
+  font-family: var(--font-heading);
+  color: #fff;
+  font-size: 4rem;
+  letter-spacing: 8px;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 30px rgba(0,0,0,1);
+  opacity: 0.95;
+  text-transform: uppercase;
+}
+
+.hero-sub-title {
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+@media (max-width: 768px) {
+  .hero-main-title {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+  }
+  .hero-sub-title {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+  }
+}
+
+/* Royal Title Animation Overlay */
+.royal-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.royal-crown {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
+}
+
+.royal-text-gold {
+  background: linear-gradient(to bottom, #FFF3B0, #D4AF37 40%, #AA7B18 60%, #FFDF73);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+}
+
+.royal-welcome {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.royal-welcome::before,
+.royal-welcome::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #D4AF37, transparent);
+  margin: 0 15px;
+}
+
+.royal-main {
+  font-family: var(--font-heading);
+  font-size: 6rem;
+  letter-spacing: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.royal-sub {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.royal-sub::before,
+.royal-sub::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #D4AF37, transparent);
+  margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .royal-main { font-size: 3rem; letter-spacing: 6px; }
+  .royal-sub { font-size: 1.5rem; letter-spacing: 5px; }
+  .royal-welcome { font-size: 1rem; letter-spacing: 3px; }
+  .royal-crown { font-size: 2.5rem; }
+}
