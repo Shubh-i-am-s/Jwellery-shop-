@@ -160,38 +160,36 @@ export default function JewelleryOrbit({ visible }) {
           const w = window.innerWidth;
           const h = window.innerHeight;
 
-          // Horizontal-only path settings
-          const rx = w < 768 ? w * 0.42 : w * 0.32;
-          const ry = 0; // Flat horizontal motion, no incline
+          // Elliptical path settings to prevent overlapping
+          const rx = w < 768 ? w * 0.45 : w * 0.45; // Wider horizontal radius
+          const ry = w < 768 ? 60 : 120; // Reduced vertical radius to prevent hitting bottom
 
           // Orbit scaling and styling bounds
           const minScale = w < 768 ? 0.35 : 0.45;
-          const maxScale = w < 768 ? 0.65 : 0.75;
+          const maxScale = w < 768 ? 1.15 : 1.45; // Increased maxScale further for an even more prominent pop
           const minOpacity = 0.15;
           const maxOpacity = 1.0;
           const minZIndex = 10;
           const maxZIndex = 100;
-          const maxBlur = 1.8;
+          const maxBlur = 2.5;
 
           cards.forEach((card, index) => {
             // Distribute cards evenly around the orbit
             const cardAngle = angleRef.current + (index * 2 * Math.PI) / cards.length;
 
-            const yOffset = w < 768 ? 60 : 110;
-            // X position: horizontal spread
+            // Reduce yOffset significantly (even negative) to pull the whole orbit up
+            const yOffset = w < 768 ? -20 : -40;
+            // X position: horizontal spread using cosine
             const x = Math.cos(cardAngle) * rx;
-            const y = yOffset;
+            // Y position: vertical spread using sine to create an ellipse
+            const y = yOffset + Math.sin(cardAngle) * ry;
 
-            // Depth: card is "front" when it's at the horizontal center (x≈0, cosAngle≈0).
-            // We want maximum scale/opacity at x=0 (cos(angle)=0, i.e. angle=π/2 or 3π/2).
-            // Use: depth = (1 - Math.abs(Math.cos(cardAngle))) — full depth at x=0, zero at edges.
-            // But for a carousel feel we want the LEFTMOST visible card to be biggest when coming from left.
-            // Best approach: use sin to create a natural front-back cycle on a tilted orbit.
-            // Since ry=0, remap depth from cosine so center cards are "front":
-            const depth = (1 - Math.abs(Math.cos(cardAngle)));
+            // Depth: Based on sine. sin(angle)=1 is the front, sin(angle)=-1 is the back.
+            // Map from [-1, 1] to [0, 1]
+            const depth = (Math.sin(cardAngle) + 1) / 2;
 
             const scale = minScale + (maxScale - minScale) * depth;
-            const opacity = minOpacity + (maxOpacity - minOpacity) * (0.4 + depth * 0.6);
+            const opacity = minOpacity + (maxOpacity - minOpacity) * (0.2 + depth * 0.8);
             const zIndex = Math.round(minZIndex + (maxZIndex - minZIndex) * depth);
             const blur = maxBlur * (1 - depth);
 
@@ -201,14 +199,14 @@ export default function JewelleryOrbit({ visible }) {
             card.style.zIndex = zIndex;
             
             // Blur background cards for a depth of field effect
-            if (blur > 0.6) {
+            if (blur > 0.8) {
               card.style.filter = `blur(${blur.toFixed(1)}px)`;
             } else {
               card.style.filter = "none";
             }
 
             // Only allow interaction with front cards
-            if (depth < 0.35) {
+            if (depth < 0.6) {
               card.style.pointerEvents = "none";
             } else {
               card.style.pointerEvents = "auto";

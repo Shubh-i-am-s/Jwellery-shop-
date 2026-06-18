@@ -1,0 +1,61 @@
+.flyby-scene {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  overflow: hidden;
+  background-color: #050505;
+  position: relative;
+}
+
+.flyby-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.flyby-card {
+  width: 300px;
+  height: 420px;
+  margin-left: -150px;
+  margin-top: -210px;
+  background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05));
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(201, 162, 39, 0.3);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flyby-card-content h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #c9a227;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.flyby-card-content p {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  opacity: 0.8;
+  line-height: 1.6;
+  font-weight: 300;
+}

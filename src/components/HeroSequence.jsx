@@ -48,6 +48,8 @@ export default function HeroSequence() {
   const lastDrawnRef = useRef(0);
   const [cardsVisible, setCardsVisible] = useState(false);
   const isVisibleRef = useRef(false);
+  const [wipVisible, setWipVisible] = useState(false);
+  const wipVisibleRef = useRef(false);
 
   // Preload images
   useEffect(() => {
@@ -163,11 +165,19 @@ export default function HeroSequence() {
 
         const currentEntry = FRAME_MANIFEST[currentIdx];
         if (currentEntry) {
+          // Toggle jewellery orbit
           const visible = (currentEntry.folder === 4 && currentEntry.frame >= 181) || 
                           (currentEntry.folder === 5 && currentEntry.frame < 60);
           if (visible !== isVisibleRef.current) {
             isVisibleRef.current = visible;
             setCardsVisible(visible);
+          }
+
+          // Toggle WIP Overlay for RMP5 frames 267 - 282
+          const showWip = currentEntry.folder === 5 && currentEntry.frame >= 267 && currentEntry.frame <= 282;
+          if (showWip !== wipVisibleRef.current) {
+            wipVisibleRef.current = showWip;
+            setWipVisible(showWip);
           }
         }
       }
@@ -187,6 +197,17 @@ export default function HeroSequence() {
       </div>
       <canvas ref={canvasRef} className="hero-canvas" />
       <JewelleryOrbit visible={cardsVisible} />
+      
+      {/* Work In Progress Animated Overlay */}
+      <div className={`wip-overlay ${wipVisible ? "visible" : ""}`}>
+        <div className="wip-content">
+          <img src="/crown.svg" alt="Crown" className="wip-crown" />
+          <h2 className="wip-title">WORK IN PROGRESS</h2>
+          <div className="wip-divider"><span className="divider-flourish">☙ ❖ ❧</span></div>
+          <p className="wip-subtitle">FOLLOW FOR NEXT<br/>JEWELLERY AREA</p>
+          <div className="wip-divider-small"><span className="divider-flourish">❧</span></div>
+        </div>
+      </div>
     </section>
   );
 }
