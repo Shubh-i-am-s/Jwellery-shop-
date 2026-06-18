@@ -1,75 +1,64 @@
 .navbar-wrapper {
-  background-color: transparent; /* Allow content to show behind the wrapper edges if needed, or keep #000 */
-  padding: 1.5rem;
-  display: flex;
-  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
   z-index: 9999;
+  background-color: transparent;
 }
 
 .navbar {
-  background: linear-gradient(180deg, #0a0a0a 0%, #030303 100%);
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: 16px;
-  width: 100%;
-  max-width: 1200px;
-  padding: 1rem 2.5rem;
-  position: relative;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-  max-height: 85px;
-  transition: max-height 0.5s cubic-bezier(0.19, 1, 0.22, 1), padding 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.navbar:hover {
-  max-height: 300px;
-  padding: 1.5rem 2.5rem 1rem 2.5rem;
-}
-
-.navbar-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 2;
-  transition: margin-bottom 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  /* Dark gold-tinted transparent pill with glassmorphism */
+  background: rgba(14, 11, 8, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 50px;
+  width: 100%;
+  max-width: 1250px;
+  padding: 0.4rem 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.65), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
-.navbar:hover .navbar-top {
-  margin-bottom: 1.25rem;
-}
-
+/* Logo Area */
 .logo-area {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 0.75rem;
 }
 
-.logo-circle {
-  width: 52px;
-  height: 52px;
-  border: 1px solid var(--color-primary);
-  border-radius: 50%;
+.logo-crest-container {
+  position: relative;
+  width: 56px;
+  height: 56px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
 }
 
-.logo-crown {
-  margin-bottom: 2px;
+.logo-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .logo-r {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -36%);
+  font-family: var(--font-heading), serif;
+  font-size: 1.35rem;
   font-weight: 500;
-  line-height: 1;
+  color: var(--color-primary);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .logo-text {
@@ -79,211 +68,182 @@
 
 .brand-name {
   color: var(--color-primary);
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-family: var(--font-heading), serif;
+  font-size: 1.45rem;
   font-weight: 500;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   margin-bottom: 0.1rem;
 }
 
 .brand-subtitle {
   color: var(--color-primary);
-  font-size: 0.65rem;
-  letter-spacing: 4px;
-  opacity: 0.8;
-}
-
-.center-decoration {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.right-actions {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.action-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--color-primary);
-  opacity: 0.9;
-  position: relative;
-  transition: opacity 0.2s ease;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.action-btn:hover {
-  opacity: 1;
-}
-
-.action-btn span {
-  font-size: 0.65rem;
-  letter-spacing: 1px;
-}
-
-.cart-btn {
-  position: relative;
-}
-
-.cart-badge {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background: radial-gradient(circle, #ffe699 0%, #d4af37 100%);
-  color: #000;
-  font-size: 0.65rem !important;
-  font-weight: 700;
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
-}
-
-.book-appointment-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: linear-gradient(180deg, #1f1a0e 0%, #0d0b06 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  color: var(--color-primary);
-  padding: 0.75rem 1.25rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.book-appointment-btn:hover {
-  border-color: rgba(212, 175, 55, 0.6);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
-}
-
-.navbar-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(212, 175, 55, 0.2) 15%, rgba(212, 175, 55, 0.2) 85%, transparent 100%);
-  margin: 0 -2.5rem 1rem -2.5rem;
-  position: relative;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.4s ease;
-}
-
-.navbar:hover .navbar-divider {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.1s;
-}
-
-.navbar-bottom {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.4s ease;
-}
-
-.navbar:hover .navbar-bottom {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-  transition-delay: 0.15s;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-link {
-  color: var(--color-primary);
-  font-size: 0.75rem;
-  letter-spacing: 1px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: opacity 0.2s ease;
+  font-size: 0.6rem;
+  letter-spacing: 2.5px;
   opacity: 0.85;
   font-weight: 500;
 }
 
-.nav-link:hover {
+/* Right Section Group */
+.nav-items-group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Vertical dividers */
+.nav-divider {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.25), transparent);
+}
+
+/* New Arrivals Link */
+.nav-new-arrivals {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transition: opacity 0.2s ease;
+  opacity: 0.9;
+}
+
+.nav-new-arrivals:hover {
   opacity: 1;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
 }
 
-.dropdown-icon {
-  opacity: 0.7;
+.star-icon {
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
 }
 
-.separator {
-  color: rgba(212, 175, 55, 0.2);
-  font-size: 0.8rem;
-  font-weight: 300;
+/* Action Buttons (Wishlist, Cart, Account) */
+.nav-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-primary);
+  opacity: 0.85;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.corner-decoration {
+.nav-action-btn:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.nav-action-btn span {
+  font-size: 0.62rem;
+  letter-spacing: 0.8px;
+  font-weight: 500;
+}
+
+.nav-icon {
+  color: var(--color-primary);
+}
+
+/* Cart Specific badge */
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-badge {
   position: absolute;
-  bottom: -5px;
-  pointer-events: none;
-  z-index: 1;
+  top: -6px;
+  right: -8px;
+  background: #D4AF37;
+  color: #000;
+  font-size: 0.58rem;
+  font-weight: bold;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
 }
 
-.corner-decoration.left {
-  left: -5px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+/* Book Appointment Button */
+.book-appointment-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  color: var(--color-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  font-family: var(--font-heading), serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.corner-decoration.right {
-  right: -5px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.book-appointment-btn:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
 }
 
-.navbar:hover .corner-decoration {
-  opacity: 1;
-  transition-delay: 0.2s;
+.btn-crown-icon {
+  color: var(--color-primary);
 }
 
-@media (max-width: 1024px) {
-  .nav-links {
-    gap: 0.75rem;
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 0.4rem 1.5rem;
   }
-  .nav-link {
-    font-size: 0.65rem;
+  .nav-items-group {
+    gap: 1rem;
+  }
+  .brand-name {
+    font-size: 1.2rem;
+  }
+  .logo-crest-container {
+    width: 48px;
+    height: 48px;
+  }
+  .logo-r {
+    font-size: 1.1rem;
   }
 }
 
 @media (max-width: 768px) {
-  .navbar-top {
-    flex-direction: column;
-    gap: 1.5rem;
+  .navbar-wrapper {
+    padding: 0.5rem 1rem;
   }
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
+  .navbar {
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
   }
-  .separator {
+  .nav-divider {
     display: none;
+  }
+  .nav-new-arrivals span,
+  .nav-action-btn span {
+    display: none; /* Icon-only or hide labels on small screens */
+  }
+  .book-appointment-btn span {
+    display: none;
+  }
+  .book-appointment-btn {
+    padding: 0.5rem;
+  }
+  .logo-text {
+    display: none; /* Hide text logo on small mobile screens */
   }
 }
